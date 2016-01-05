@@ -1,0 +1,14 @@
+{
+  "name": "mean-todo-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ken Howard <ken@simplicatedweb.com> (http://kenhowardpdx.com)",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
