@@ -11,6 +11,7 @@
   "dependencies": {
     "angular": "^1.4.8",
     "express": "^4.13.3",
+    "mongoose": "^4.3.4",
     "webpack": "^1.12.9"
   }
 }

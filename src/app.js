@@ -2,6 +2,8 @@
 
 var express = require('express');
 
+require('./database');
+
 var app = express();
 
 app.use('/', express.static('public'));
