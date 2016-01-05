@@ -9,6 +9,8 @@
   "author": "Ken Howard <ken@simplicatedweb.com> (http://kenhowardpdx.com)",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.13.3"
+    "angular": "^1.4.8",
+    "express": "^4.13.3",
+    "webpack": "^1.12.9"
   }
 }
