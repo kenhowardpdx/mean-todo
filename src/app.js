@@ -6,6 +6,9 @@ require('./database');
 
 var app = express();
 
+// parse application/json
+app.use(require('body-parser').json());
+
 app.use('/', express.static('public'));
 
 app.use('/api', require('./api'));

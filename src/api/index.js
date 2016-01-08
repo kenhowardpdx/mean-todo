@@ -15,7 +15,20 @@ apiRouter.get('/todos', function(req, res) {
 	});
 });
 
-// TODO: Add POST Route to create new entries
+apiRouter.post('/todos', function(req, res) {
+	var todo = req.body;
+	if (!todo) {
+		res.status(422).json({ code: 422, message: 'Unprocessable Entity' });
+	} else {
+		Todo.create(todo, function (err, todo) {
+			if (err) {
+				res.status(500).json({ message: err.message });
+			} else {
+				res.json({ todo: todo, message: 'Created Todo' });
+			}
+		});
+	}
+});
 
 // TODO: Add PUT Route to update existing entries
 
