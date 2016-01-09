@@ -12,8 +12,14 @@ function TodoCtrl ($scope, dataService) {
         return todo
       };
     })
-    dataService.saveTodos(filteredTodos);
-  }; 
+    dataService.saveTodos(filteredTodos).finally(resetTodoState);
+  };
+  
+  function resetTodoState() {
+      $scope.todos.forEach(function (todo) {
+         todo.edited = false; 
+      });
+  }
 };
 
 module.exports = TodoCtrl;

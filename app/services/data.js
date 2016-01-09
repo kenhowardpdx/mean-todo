@@ -1,6 +1,6 @@
 'use strict';
 
-function DataService ($http) {
+function DataService ($http, $q) {
   this.getTodos = function(cb) {
     $http.get('/api/todos').then(cb);
   };
@@ -10,7 +10,23 @@ function DataService ($http) {
   };
   
   this.saveTodos = function(todos) {
-    console.log("I saved " + todos.length + " todos!");
+    var queue = [];
+    todos.forEach(function (todo) {
+        var request;
+        if(!todo._id) {
+            request = $http.post('/api/todos', todo).then(function(result) {
+                todo = result.data.todo;
+            });
+        } else {
+            request = $http.put('/api/todos/' + todo._id, todo).then(function(result) {
+                todo = result.data.todo;
+            });
+        }
+        queue.push(request);
+    });
+    return $q.all(queue).then(function (results) {
+        console.log("I saved " + todos.length + " todos!");
+    });
   };
   
 };
