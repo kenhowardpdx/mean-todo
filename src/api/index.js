@@ -46,6 +46,15 @@ apiRouter.put('/todos/:id', function(req, res) {
 	}
 });
 
-// TODO: Add DELETE Route to remove existing entries
+apiRouter.delete('/todos/:id', function (req, res) {
+    var todoId = req.params.id;
+    Todo.findByIdAndRemove(todoId, function (err, result) {
+        if (err) {
+            res.status(500).json({ message: err.message });
+        } else {
+            res.json({ message: 'Deleted Todo' });
+        }
+    });
+});
 
 module.exports = apiRouter;

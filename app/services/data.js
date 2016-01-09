@@ -6,7 +6,12 @@ function DataService ($http, $q) {
   };
   
   this.deleteTodo = function(todo) {
-    console.log("I deleted the " + todo.name + " todo!");
+    if (!todo._id) {
+        return $q.resolve();
+    }
+    return $http.delete('/api/todos/' + todo._id).then(function () {
+        console.log("I deleted the " + todo.name + " todo!"); 
+    });
   };
   
   this.saveTodos = function(todos) {
