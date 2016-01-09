@@ -11,7 +11,7 @@ var todos = [
 todos.forEach(function (t, index) {
   Todo.find({ 'name': t }, function(err, todos) {
   	if (!err && !todos.length) {
-      todo.create({ completed: false, name: t });
+      Todo.create({ completed: false, name: t });
   	}
   });
 });
